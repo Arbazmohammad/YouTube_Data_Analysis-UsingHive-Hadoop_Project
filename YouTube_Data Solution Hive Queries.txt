@@ -1,0 +1,47 @@
+Youtube Analysis Hive Queries:-
+
+1) Create Database:-
+
+create database youtubedata_analysis;
+
+--------------------------------------------------------------------------------------
+
+2) Create Table with specified fields(Schema):-
+
+
+create table youtube_data (videoID varchar(11), name string, TimeInterval int, category string, length int, views int, rating float, numrating int, comments int, relatedID varchar(11))
+row format delimited fields terminated by "\t" stored as textfile location '/user/arbazmoham18edu/Input/youtube_data';
+
+---------------------------------------------------------------------------------------
+
+3) Load data into table
+
+
+load data local inpath '/home/arbazmoham18edu/Input/youtubedata.txt' into table youtube_data;
+
+-----------------------------------------------------------------------------------------------------------------
+
+Problem Statement A
+
+select category, count(*) A
+from youtube_data
+group by category
+order by A desc limit 5;
+
+----------------------------------------------------------------------------------------------------------------
+
+Problem Statement B
+
+select videoID, rating
+from youtube_data
+order by rating desc limit 10;
+
+------------------------------------------------------------------------------------------------------------------
+
+Problem Statement C
+
+select videoID, views
+from youtube_data
+order by views desc limit 100;
+
+-------------------------------------------------------------------------------------------------------------------
